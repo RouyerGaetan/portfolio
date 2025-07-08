@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  background: #0d0d0d;
+  color: #33ff33;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+}
+
+/* Partie Introduction */
+#typewriter {
+  color: #33ff33;
+  padding: 2rem;
+  text-align: left;
+}
+
+.type-line {
+  margin-bottom: 1rem;
+  white-space: pre;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink-caret 0.7s steps(1) infinite;
+  color: #33ff33;
+}
+
+@keyframes blink-caret {
+  50% { opacity: 0; }
+}
+
+.fade-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.enter-section {
+  margin-top: 2rem;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 5s ease-in-out, visibility 5s ease-in-out;
+}
+
+.enter-section.fade-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.enter-section button {
+  background: #0ff;
+  color: #000;
+  border: 2px solid #0ff;
+  padding: 1rem 2.5rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: all 0.3s ease;
+  outline: none;
+  user-select: none;
+  border-radius: 6px;
+}
+
+.enter-section button:hover {
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+  color: #0ff;
+  background: transparent;
+  border-color: #0ff;
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+.enter-section button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px #0ff;
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+  }
+  to {
+    box-shadow: 0 0 35px #0ff, 0 0 70px #0ff;
+  }
+}
+
+/* Glitch */
+.glitch {
+  color: #fff;
+  position: relative;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  color: #ff00c8;
+  top: -2px;
+  animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  color: #00fff9;
+  top: 2px;
+  animation: glitchBottom 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 90% 0); }
+  100% { clip-path: inset(0 0 10% 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip-path: inset(90% 0 0 0); }
+  100% { clip-path: inset(10% 0 0 0); }
+}
+
+/* Contenu principal */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
+  background-color: #222;
+  border: 1px solid #555;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: #00ffff;
+  color: #000;
+}
+
+main section {
+  margin-bottom: 2rem;
+}
+
+.project-card {
+  border: 2px dashed #00ffff;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #111;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  font-size: 12px;
+}
