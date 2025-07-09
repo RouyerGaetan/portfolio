@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Portfolio | GameDev</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
   <!-- Son de frappe -->
-  <audio id="type-sound" src="https://actions.google.com/sounds/v1/keyboard/keyboard_typing_click.ogg" preload="auto"></audio>
+  <audio id="type-sound" src="https://actions.google.com/sounds/v1/keyboard/keyboard_typing_click.ogg"
+    preload="auto"></audio>
 
   <!-- Écran d’intro façon terminal -->
   <div class="intro-screen">
     <div id="typewriter"></div>
     <div class="enter-section" id="enter-section">
-      <button id="enter-btn">> Entrer <</button>
+      <button id="enter-btn">Entrer</button>
     </div>
   </div>
 
@@ -27,96 +30,69 @@
     </header>
 
     <nav>
-      <a href="#">Accueil</a>
-      <a href="#">Projets</a>
-      <a href="#">À propos</a>
-      <a href="#">Contact</a>
+      <a href="#intro">Accueil</a>
+      <a href="#projects">Projets</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <main>
-      <section class="intro">
+    <main class="container">
+      <section id="intro" class="intro">
         <h2>Bienvenue sur mon terrain de jeu</h2>
-        <p>Voici mon portfolio de projets réalisés dans le cadre de ma reconversion en tant que développeur jeux vidéo.</p>
+        <p>Voici mon portfolio de projets réalisés dans le cadre de ma reconversion en tant que développeur jeux vidéo.
+        </p>
       </section>
 
-      <section class="projects">
+      <section id="projects" class="projects">
         <h2>🎮 Projets</h2>
         <div class="project-card">
           <h3>🕹️ Bandit Manchot</h3>
           <p>Mini-jeu Flutter avec animations, logique de jackpot et tirage aléatoire.</p>
-          <a href="#">Voir le code</a>
+          <a href="#" target="_blank">Voir le code</a>
+        </div>
+        <!-- Tu peux rajouter d'autres cartes ici -->
+      </section>
+
+      <section id="about" class="about">
+        <h2>👨‍💻 À propos</h2>
+        <p>Actuellement en reconversion professionnelle en tant que développeur d’applications (C#), je me spécialise
+          progressivement dans le développement de jeux vidéo. Passionné, autonome et déterminé, je construis mon avenir
+          pixel après pixel via des projets personnels, notamment sur Unity</p>
+      </section>
+
+      <!-- <section id="contact" class="contact">
+        <h2>📬 Contact</h2>
+        <p>Vous pouvez me contacter par e-mail à : <a href="mailto:tonemail@example.com">tonemail@example.com</a></p>
+        <p>Ou me retrouver sur <a href="https://www.linkedin.com/in/tonprofil" target="_blank">LinkedIn</a></p>
+      </section> -->
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2>📬 Contact</h2>
+          <form>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Envoyer</button>
+          </form>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>© 2025 - Dev.Gamer | <a href="https://github.com/tonpseudo" target="_blank">GitHub</a> | <a href="https://linkedin.com/in/tonprofil" target="_blank">LinkedIn</a></p>
+      <p>© 2025 - Dev.Gamer | <a href="https://github.com/tonpseudo" target="_blank">GitHub</a> | <a
+          href="https://linkedin.com/in/tonprofil" target="_blank">LinkedIn</a></p>
     </footer>
   </div>
 
-  <script>
-    const lines = [
-      '> Initialisation du portfolio...',
-      '> Initialisation terminée, vous pouvez entrer'
-    ];
-    
-    const typewriterContainer = document.getElementById('typewriter');
-    const typeSound = document.getElementById('type-sound');
-    const enterSection = document.getElementById('enter-section');
-    const enterBtn = document.getElementById('enter-btn');
-    const container = document.querySelector('.container');
-    const introScreen = document.querySelector('.intro-screen');
-
-    let currentLine = 0;
-
-    function typeLine(text, callback) {
-      const p = document.createElement('p');
-      const span = document.createElement('span');
-      span.classList.add('cursor');
-      span.textContent = '_';
-
-      p.classList.add('type-line');
-      typewriterContainer.appendChild(p);
-      p.appendChild(span);
-
-      let i = 0;
-      const interval = setInterval(() => {
-        p.textContent = text.slice(0, i + 1);
-        p.appendChild(span);
-
-        typeSound.currentTime = 0;
-        typeSound.play();
-
-        i++;
-        if (i === text.length) {
-          clearInterval(interval);
-          span.remove();
-          if (callback) setTimeout(callback, 500);
-        }
-      }, 50);
-    }
-
-    function startTyping() {
-      typeLine(lines[currentLine], () => {
-        currentLine++;
-        if (currentLine < lines.length) {
-          setTimeout(() => typeLine(lines[currentLine], showButton), 1000);
-        }
-      });
-    }
-
-    function showButton() {
-        enterSection.classList.add('fade-visible');
-        enterBtn.focus();
-    }
-
-    enterBtn.addEventListener('click', () => {
-      introScreen.style.display = 'none';
-      container.classList.remove('hidden');
-    });
-
-    startTyping();
-  </script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>

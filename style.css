@@ -26,7 +26,9 @@ body {
 }
 
 @keyframes blink-caret {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .fade-visible {
@@ -82,6 +84,7 @@ body {
   from {
     box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
   }
+
   to {
     box-shadow: 0 0 35px #0ff, 0 0 70px #0ff;
   }
@@ -118,13 +121,23 @@ body {
 }
 
 @keyframes glitchTop {
-  0% { clip-path: inset(0 0 90% 0); }
-  100% { clip-path: inset(0 0 10% 0); }
+  0% {
+    clip-path: inset(0 0 90% 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 10% 0);
+  }
 }
 
 @keyframes glitchBottom {
-  0% { clip-path: inset(90% 0 0 0); }
-  100% { clip-path: inset(10% 0 0 0); }
+  0% {
+    clip-path: inset(90% 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(10% 0 0 0);
+  }
 }
 
 /* Contenu principal */
@@ -175,6 +188,60 @@ main section {
   background-color: #111;
 }
 
+/* Formulaire de contact */
+
+.contact {
+  background-color: #111;
+  border: 2px dashed #00ffff;
+  border-radius: 10px;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.contact h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+form {
+  text-align: left;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /* ✅ pour éviter les débordements */
+}
+
+form button {
+  padding: 0.5rem 1rem;
+  background-color: #00ffff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #00dddd;
+}
+
+/* Footer */
 footer {
   text-align: center;
   margin-top: 2rem;
