@@ -1,6 +1,6 @@
 const lines = [
     '> Initialisation du portfolio...',
-    '> Initialisation terminée, vous pouvez entrer'
+    '> Initialisation terminée, vous pouvez entrer.'
 ];
 
 const typewriterContainer = document.getElementById('typewriter');
@@ -54,7 +54,7 @@ function typeLine(text, callback) {
             clearInterval(interval);
             cursor.remove();
             stopTypingSound();
-            if (callback) setTimeout(callback, 500);
+            if (callback) setTimeout(callback, 1500);
         }
     }, 50);
 }
