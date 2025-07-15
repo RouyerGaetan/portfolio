@@ -7,7 +7,6 @@ body {
 }
 
 /* Partie Starter Screen */
-
 .starter-screen {
   position: fixed;
   inset: 0;
@@ -60,7 +59,6 @@ body {
 .enter-section {
   margin-top: 2rem;
   text-align: center;
-
   opacity: 0;
   visibility: hidden;
   transition: opacity 5s ease-in-out, visibility 5s ease-in-out;
@@ -105,10 +103,33 @@ body {
   from {
     box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
   }
-
   to {
     box-shadow: 0 0 35px #0ff, 0 0 70px #0ff;
   }
+}
+
+/* Vidéo glitch */
+#glitch-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 9999;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Écran d'introduction */
+.intro-screen {
+  transition: opacity 0.5s ease;
+}
+
+.intro-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Glitch */
@@ -145,7 +166,6 @@ body {
   0% {
     clip-path: inset(0 0 90% 0);
   }
-
   100% {
     clip-path: inset(0 0 10% 0);
   }
@@ -155,7 +175,6 @@ body {
   0% {
     clip-path: inset(90% 0 0 0);
   }
-
   100% {
     clip-path: inset(10% 0 0 0);
   }
@@ -166,10 +185,6 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
-}
-
-.hidden {
-  display: none;
 }
 
 header {
@@ -210,7 +225,6 @@ main section {
 }
 
 /* Formulaire de contact */
-
 .contact {
   background-color: #111;
   border: 2px dashed #00ffff;
@@ -245,7 +259,6 @@ form textarea {
   margin-bottom: 1rem;
   border-radius: 4px;
   box-sizing: border-box;
-  /* ✅ pour éviter les débordements */
 }
 
 form button {

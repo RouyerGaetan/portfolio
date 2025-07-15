@@ -2,10 +2,10 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Portfolio | GameDev</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -19,12 +19,17 @@
   </div>
 
   <!-- Écran d’intro façon terminal -->
-  <div class="intro-screen">
+  <div class="intro-screen" style="display:none;">
     <div id="typewriter"></div>
     <div class="enter-section" id="enter-section">
       <button id="enter-btn">Entrer</button>
     </div>
   </div>
+
+  <!-- Vidéo glitch -->
+  <video id="glitch-video" class="hidden" autoplay muted>
+    <source src="assets/signal.mp4" type="video/mp4" />
+  </video>
 
   <!-- Contenu principal (caché au départ) -->
   <div class="container hidden">
@@ -36,67 +41,54 @@
     <nav>
       <a href="#intro">Accueil</a>
       <a href="#projects">Projets</a>
-      <a href="#about">À propos</a>
       <a href="#contact">Contact</a>
     </nav>
 
-    <main class="container">
-      <section id="intro" class="intro">
-        <h2>Bienvenue sur mon terrain de jeu</h2>
-        <p>Voici mon portfolio de projets réalisés dans le cadre de ma reconversion en tant que développeur jeux vidéo.
-        </p>
+    <main>
+      <section id="intro">
+        <h2>Présentation</h2>
+        <p>Bienvenue sur mon portfolio de développeur de jeux vidéo. Ici vous découvrirez mes projets, mes compétences, et comment me contacter.</p>
       </section>
 
-      <section id="projects" class="projects">
-        <h2>🎮 Projets</h2>
+      <section id="projects">
+        <h2>Projets récents</h2>
+
         <div class="project-card">
-          <h3>🕹️ Bandit Manchot</h3>
-          <p>Mini-jeu Flutter avec animations, logique de jackpot et tirage aléatoire.</p>
-          <a href="#" target="_blank">Voir le code</a>
+          <h3>Mon premier jeu en Unity</h3>
+          <p>Un jeu de plateforme 2D avec des mécaniques de saut et collecte d’objets.</p>
         </div>
-        <!-- Tu peux rajouter d'autres cartes ici -->
+
+        <div class="project-card">
+          <h3>Simulation de monde ouvert</h3>
+          <p>Prototype en C# avec système de météo dynamique et IA simple.</p>
+        </div>
+
       </section>
 
-      <section id="about" class="about">
-        <h2>👨‍💻 À propos</h2>
-        <p>Actuellement en reconversion professionnelle en tant que développeur d’applications (C#), je me spécialise
-          progressivement dans le développement de jeux vidéo. Passionné, autonome et déterminé, je construis mon avenir
-          pixel après pixel via des projets personnels, notamment sur Unity</p>
-      </section>
+      <section id="contact">
+        <h2>Contact</h2>
 
-      <!-- <section id="contact" class="contact">
-        <h2>📬 Contact</h2>
-        <p>Vous pouvez me contacter par e-mail à : <a href="mailto:tonemail@example.com">tonemail@example.com</a></p>
-        <p>Ou me retrouver sur <a href="https://www.linkedin.com/in/tonprofil" target="_blank">LinkedIn</a></p>
-      </section> -->
+        <form>
+          <label for="name">Nom</label>
+          <input type="text" id="name" name="name" required />
 
-      <section id="contact" class="contact">
-        <div class="container">
-          <h2>📬 Contact</h2>
-          <form>
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
 
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Envoyer</button>
-          </form>
-        </div>
+          <button type="submit">Envoyer</button>
+        </form>
       </section>
     </main>
 
     <footer>
-      <p>© 2025 - Dev.Gamer | <a href="https://github.com/tonpseudo" target="_blank">GitHub</a> | <a
-          href="https://linkedin.com/in/tonprofil" target="_blank">LinkedIn</a></p>
+      <p>© 2025 Dev.Gamer() - Tous droits réservés</p>
     </footer>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 
 </html>
