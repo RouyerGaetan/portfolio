@@ -114,9 +114,18 @@ enterBtn.addEventListener('click', () => {
 
         setTimeout(() => {
             introScreen.style.display = 'none';  // cache complètement
-            container.classList.remove('hidden'); // montrer le contenu principal
+
+            // 👉 Montre le container avec fondu progressif
+            container.classList.remove('hidden');  // retire display: none
+            container.classList.add('fade-in');    // applique transition
+
+            // Déclenche l'opacité après un petit délai pour que le navigateur prenne en compte la classe fade-in
+            setTimeout(() => {
+                container.classList.add('visible');
+            }, 50);
+
         }, 500);
 
-    }, 3500);
+    }, 2500);
 });
 

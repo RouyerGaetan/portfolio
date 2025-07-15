@@ -1,7 +1,8 @@
 body {
   margin: 0;
   background: #0d0d0d;
-  color: #00ff66; /* Vert plus doux */
+  color: #00ff66;
+  /* Vert plus doux */
   font-family: 'Press Start 2P', monospace;
   font-size: 14px;
   line-height: 1.6;
@@ -105,6 +106,7 @@ body {
   from {
     box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
   }
+
   to {
     box-shadow: 0 0 35px #0ff, 0 0 70px #0ff;
   }
@@ -132,6 +134,18 @@ body {
 .intro-screen.hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Apparition en fondu */
+.fade-in {
+  opacity: 0;
+  display: block;
+  /* force l'affichage */
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
 }
 
 /* Glitch */
@@ -168,6 +182,7 @@ body {
   0% {
     clip-path: inset(0 0 90% 0);
   }
+
   100% {
     clip-path: inset(0 0 10% 0);
   }
@@ -177,14 +192,18 @@ body {
   0% {
     clip-path: inset(90% 0 0 0);
   }
+
   100% {
     clip-path: inset(10% 0 0 0);
   }
 }
 
 /* Titres */
-h1, h2, h3 {
-  color: #00ffff; /* Cyan pour titres */
+h1,
+h2,
+h3 {
+  color: #00ffff;
+  /* Cyan pour titres */
   margin-bottom: 1rem;
   line-height: 1.2;
 }
@@ -205,16 +224,20 @@ h3 {
 
 /* Paragraphes */
 p {
-  color: #cccccc; /* Texte plus lisible */
+  color: #cccccc;
+  /* Texte plus lisible */
   margin-bottom: 1rem;
 }
 
 /* Contenu principal */
 .container {
-  max-width: 1200px; /* plus large */
-  width: 100%; /* pour qu'il s'adapte bien */
+  max-width: 1200px;
+  /* plus large */
+  width: 100%;
+  /* pour qu'il s'adapte bien */
   margin: 0 auto;
-  padding: 4rem 2rem; /* plus de padding vertical */
+  padding: 4rem 2rem;
+  /* plus de padding vertical */
   box-sizing: border-box;
 }
 
@@ -249,9 +272,12 @@ main section {
 }
 
 main p {
-  line-height: 1.8; /* plus d'air entre lignes */
-  font-size: 15px; /* léger boost pour le confort */
-  max-width: 70ch; /* limite la longueur des lignes */
+  line-height: 1.8;
+  /* plus d'air entre lignes */
+  font-size: 15px;
+  /* léger boost pour le confort */
+  max-width: 70ch;
+  /* limite la longueur des lignes */
 }
 
 /* Section Projets */
@@ -269,19 +295,23 @@ main p {
   padding: 2.5rem 3rem;
   background: #111;
   border-radius: 8px;
-  box-sizing: border-box; /* garantit que padding ne déborde pas */
+  box-sizing: border-box;
+  /* garantit que padding ne déborde pas */
 }
 
 .project-card h3 {
-  color: #ff00c8; /* Magenta pour titres projets */
+  color: #ff00c8;
+  /* Magenta pour titres projets */
   font-size: 20px;
   margin-bottom: 1rem;
 }
 
 .project-card p {
   color: #eeeeee;
-  font-size: 14px; /* un peu plus grand */
-  line-height: 1.8; /* plus espacé */
+  font-size: 14px;
+  /* un peu plus grand */
+  line-height: 1.8;
+  /* plus espacé */
 }
 
 
@@ -339,7 +369,8 @@ form button {
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
   width: fit-content;
-  justify-self: center; /* centre le bouton horizontalement */
+  justify-self: center;
+  /* centre le bouton horizontalement */
 }
 
 form button:hover {
@@ -358,7 +389,8 @@ form button {
 
 form input,
 form textarea {
-  margin-bottom: 1.5rem; /* plus d’espace après champs */
+  margin-bottom: 1.5rem;
+  /* plus d’espace après champs */
 }
 
 
