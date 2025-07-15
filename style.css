@@ -212,9 +212,10 @@ p {
 /* Contenu principal */
 .container {
   max-width: 1200px; /* plus large */
-  width: 90%; /* pour qu'il s'adapte bien */
+  width: 100%; /* pour qu'il s'adapte bien */
   margin: 0 auto;
   padding: 4rem 2rem; /* plus de padding vertical */
+  box-sizing: border-box;
 }
 
 header {
@@ -254,16 +255,16 @@ main p {
 }
 
 /* Section Projets */
-/* Section Projets */
-#projects {
+#projects,
+#intro {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
 }
+
 
 .project-card {
   width: 100%;
-  max-width: 1000px; /* plus large que la container par défaut */
   border: 2px dashed #00ffff;
   padding: 2.5rem 3rem;
   background: #111;
@@ -291,7 +292,8 @@ main p {
   border-radius: 10px;
   margin: 4rem auto;
   padding: 3rem;
-  max-width: 800px; /* limite la largeur totale du bloc */
+  max-width: 800px;
+  box-sizing: border-box;
 }
 
 .contact h2 {
@@ -303,18 +305,20 @@ main p {
 
 form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* responsive */
-  grid-template-columns : 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
+  max-width: 600px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 form label {
   color: #00ffff;
-  margin-bottom: 0.3rem;
 }
 
 form input,
 form textarea {
+  width: 100%;
   background: #000;
   border: 2px solid #00ffff;
   color: #00ffff;
@@ -322,12 +326,7 @@ form textarea {
   padding: 0.75rem 1rem;
   font-size: 14px;
   transition: border-color 0.3s;
-}
-
-form input:focus,
-form textarea:focus {
-  outline: none;
-  border-color: #ff00c8; /* magenta au focus */
+  box-sizing: border-box;
 }
 
 form button {
@@ -339,6 +338,8 @@ form button {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  width: fit-content;
+  justify-self: center; /* centre le bouton horizontalement */
 }
 
 form button:hover {
