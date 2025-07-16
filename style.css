@@ -453,30 +453,30 @@ footer {
 
 @keyframes crtOff {
   0% {
-    transform: scaleY(1);
+    transform: scaleY(1) scaleX(1);
     opacity: 1;
   }
   50% {
-    transform: scaleY(0.1);
+    transform: scaleY(0.05) scaleX(1);
     opacity: 1;
   }
   100% {
-    transform: scaleY(0);
+    transform: scaleY(0) scaleX(0);
     opacity: 0;
   }
 }
 
 @keyframes crtOn {
   0% {
-    transform: scaleY(0);
+    transform: scaleY(0) scaleX(0);
     opacity: 0;
   }
   50% {
-    transform: scaleY(0.1);
+    transform: scaleY(0.05) scaleX(1);
     opacity: 1;
   }
   100% {
-    transform: scaleY(1);
+    transform: scaleY(1) scaleX(1);
     opacity: 1;
   }
 }
