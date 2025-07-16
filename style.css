@@ -1,8 +1,7 @@
 body {
   margin: 0;
   background: #0d0d0d;
-  color: #00ff66;
-  /* Vert plus doux */
+  color: #33ff33;
   font-family: 'Press Start 2P', monospace;
   font-size: 14px;
   line-height: 1.6;
@@ -72,44 +71,33 @@ body {
   visibility: visible;
 }
 
-.enter-section button {
-  background: #0ff;
-  color: #000;
-  border: 2px solid #0ff;
-  padding: 1rem 2.5rem;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 14px;
+.enter-line {
+  position: relative;
+  display: inline-block;
+}
+
+.enter-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #33ff33;
+  bottom: -4px;
+
+  transform: scaleX(0); /* le trait est caché au départ */
+  transform-origin: center; /* point de départ de l'animation */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.enter-line:hover {
+  color: #ffffff;
   cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-  transition: all 0.3s ease;
-  outline: none;
-  user-select: none;
-  border-radius: 6px;
 }
 
-.enter-section button:hover {
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-  color: #0ff;
-  background: transparent;
-  border-color: #0ff;
-  animation: pulseGlow 1.5s infinite alternate;
-}
-
-.enter-section button:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 5px #0ff;
-}
-
-@keyframes pulseGlow {
-  from {
-    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-  }
-
-  to {
-    box-shadow: 0 0 35px #0ff, 0 0 70px #0ff;
-  }
+.enter-line:hover::after {
+  transform: scaleX(1); /* le trait se déploie */
+  background: #ffffff; /* le trait prend la couleur du texte */
 }
 
 /* Vidéo glitch */
@@ -232,12 +220,9 @@ p {
 /* Contenu principal */
 .container {
   max-width: 1200px;
-  /* plus large */
   width: 100%;
-  /* pour qu'il s'adapte bien */
   margin: 0 auto;
   padding: 4rem 2rem;
-  /* plus de padding vertical */
   box-sizing: border-box;
 }
 
@@ -273,11 +258,8 @@ main section {
 
 main p {
   line-height: 1.8;
-  /* plus d'air entre lignes */
   font-size: 15px;
-  /* léger boost pour le confort */
   max-width: 70ch;
-  /* limite la longueur des lignes */
 }
 
 /* Section Projets */
@@ -296,12 +278,10 @@ main p {
   background: #111;
   border-radius: 8px;
   box-sizing: border-box;
-  /* garantit que padding ne déborde pas */
 }
 
 .project-card h3 {
   color: #ff00c8;
-  /* Magenta pour titres projets */
   font-size: 20px;
   margin-bottom: 1rem;
 }
@@ -309,9 +289,7 @@ main p {
 .project-card p {
   color: #eeeeee;
   font-size: 14px;
-  /* un peu plus grand */
   line-height: 1.8;
-  /* plus espacé */
 }
 
 
@@ -370,7 +348,6 @@ form button {
   transition: background 0.3s, transform 0.2s;
   width: fit-content;
   justify-self: center;
-  /* centre le bouton horizontalement */
 }
 
 form button:hover {
@@ -390,7 +367,6 @@ form button {
 form input,
 form textarea {
   margin-bottom: 1.5rem;
-  /* plus d’espace après champs */
 }
 
 

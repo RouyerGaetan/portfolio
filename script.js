@@ -80,7 +80,7 @@ function showButton() {
 
   const enterLine = document.createElement('p');
   enterLine.textContent = '[ Entrer ]';
-  enterLine.classList.add('type-line');
+  enterLine.classList.add('type-line', 'enter-line');
   enterLine.style.cursor = 'pointer';
 
   // 👇 Clique avec la souris
