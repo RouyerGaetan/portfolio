@@ -445,6 +445,31 @@ footer {
   z-index: 10;
 }
 
+.led-indicator {
+  position: absolute;
+  top: 194.2px;    /* ← ajuste ça */
+  right: 334.8px;  /* ← ajuste ça */
+  width: 11px;
+  height: 11px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 0 5px red;
+  display: none; /* caché par défaut */
+  animation: ledBlink 1s infinite;
+  z-index: 15;
+}
+
+@keyframes ledBlink {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 5px red;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 1px red;
+  }
+}
+
 .flash {
   position: absolute;
   top: 0;

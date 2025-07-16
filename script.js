@@ -14,6 +14,7 @@ const glitchVideo = document.getElementById('glitch-video');
 const toggleButton = document.getElementById('toggleButton');
 const pokedexPhoto = document.getElementById('pokedexPhoto');
 const flash = document.getElementById('flash');
+const ledIndicator = document.getElementById('ledIndicator');
 
 let currentLine = 0;
 
@@ -157,19 +158,20 @@ function lancerTransition() {
 let isVisible = false;
 
 toggleButton.addEventListener('click', () => {
-    // Toujours déclencher le flash
-    flash.style.animation = 'none'; // réinitialiser
-    void flash.offsetWidth; // force le reflow
+    flash.style.animation = 'none';
+    void flash.offsetWidth;
     flash.style.animation = 'flashEffect 0.3s forwards';
   
     if (isVisible) {
       pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
+      ledIndicator.style.display = 'none'; // ← cacher LED
       isVisible = false;
     } else {
       pokedexPhoto.style.display = 'block';
-      pokedexPhoto.style.animation = 'none'; // reset pour rejouer
+      pokedexPhoto.style.animation = 'none';
       void pokedexPhoto.offsetWidth;
       pokedexPhoto.style.animation = 'crtOn 0.5s forwards';
+      ledIndicator.style.display = 'block'; // ← montrer LED
       isVisible = true;
     }
   });
