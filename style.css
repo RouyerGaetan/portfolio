@@ -40,8 +40,6 @@ body {
   background-color: #fff;
   border: none;
   cursor: pointer;
-  
-  /* Ajout pulse */
   animation: pulse 2s infinite ease-in-out;
   transition: box-shadow 0.3s ease;
 }
@@ -104,8 +102,8 @@ body {
   background: #33ff33;
   bottom: -4px;
 
-  transform: scaleX(0); /* le trait est caché au départ */
-  transform-origin: center; /* point de départ de l'animation */
+  transform: scaleX(0);
+  transform-origin: center;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
@@ -115,8 +113,8 @@ body {
 }
 
 .enter-line:hover::after {
-  transform: scaleX(1); /* le trait se déploie */
-  background: #ffffff; /* le trait prend la couleur du texte */
+  transform: scaleX(1);
+  background: #ffffff;
 }
 
 /* Vidéo glitch */
