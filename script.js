@@ -154,26 +154,23 @@ function lancerTransition() {
     }, 2500);
 }
 
-let isVisible = true;
+let isVisible = false;
 
-  toggleButton.addEventListener('click', () => {
+toggleButton.addEventListener('click', () => {
+    // Toujours déclencher le flash
+    flash.style.animation = 'none'; // réinitialiser
+    void flash.offsetWidth; // force le reflow
+    flash.style.animation = 'flashEffect 0.3s forwards';
+  
     if (isVisible) {
       pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
-      flash.style.animation = 'flashEffect 0.3s forwards';
       isVisible = false;
     } else {
       pokedexPhoto.style.display = 'block';
+      pokedexPhoto.style.animation = 'none'; // reset pour rejouer
+      void pokedexPhoto.offsetWidth;
       pokedexPhoto.style.animation = 'crtOn 0.5s forwards';
       isVisible = true;
     }
   });
-
-  pokedexPhoto.addEventListener('animationend', (e) => {
-    if (!isVisible && e.animationName === 'crtOff') {
-      pokedexPhoto.style.display = 'none';
-    }
-  });
-
-  flash.addEventListener('animationend', () => {
-    flash.style.animation = 'none';
-  });
+  

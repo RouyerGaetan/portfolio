@@ -393,6 +393,8 @@ footer {
   font-size: 12px;
 }
 
+
+/* Pokedex */
 .pokedex-container {
   position: fixed;
   top: 20px;
@@ -426,6 +428,21 @@ footer {
   object-fit: cover;
   transform-origin: center center;
   transition: transform 0.3s, opacity 0.3s;
+  display: none;
+}
+
+.pokedex-button {
+  position: absolute;
+  top: 67%;
+  left: 88.5%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: none;
+  opacity: 0;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .flash {
