@@ -18,6 +18,21 @@ body {
   z-index: 9999;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px #fff;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ea0707;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px #fff;
+  }
+}
+
 #start-script-btn {
   font-family: 'Press Start 2P', monospace;
   padding: 1rem 2rem;
@@ -25,6 +40,10 @@ body {
   background-color: #fff;
   border: none;
   cursor: pointer;
+  
+  /* Ajout pulse */
+  animation: pulse 2s infinite ease-in-out;
+  transition: box-shadow 0.3s ease;
 }
 
 /* Partie Introduction */
