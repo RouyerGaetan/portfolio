@@ -76,18 +76,30 @@ function startTyping() {
 }
 
 function showButton() {
-    enterSection.classList.add('fade-visible');
+  enterSection.classList.add('fade-visible');
 
-    const enterLine = document.createElement('p');
-    enterLine.textContent = '[ Entrer ]';
-    enterLine.classList.add('type-line');
-    enterLine.style.cursor = 'pointer';
+  const enterLine = document.createElement('p');
+  enterLine.textContent = '[ Entrer ]';
+  enterLine.classList.add('type-line');
+  enterLine.style.cursor = 'pointer';
 
-    enterLine.addEventListener('click', () => {
-        lancerTransition();
-    });
+  // 👇 Clique avec la souris
+  enterLine.addEventListener('click', () => {
+    lancerTransition();
+  });
 
-    enterSection.appendChild(enterLine);
+  // 👇 Appuie sur ENTER
+  function handleEnterKey(e) {
+    if (e.key === 'Enter') {
+      lancerTransition();
+      // Nettoie le listener une fois utilisé pour éviter les doublons
+      document.removeEventListener('keydown', handleEnterKey);
+    }
+  }
+
+  document.addEventListener('keydown', handleEnterKey);
+
+  enterSection.appendChild(enterLine);
 }
 
 startScriptBtn.addEventListener('click', () => {
