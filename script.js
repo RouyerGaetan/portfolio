@@ -1,6 +1,6 @@
 const lines = [
     '> Initialisation du portfolio...',
-    '> Initialisation terminée, vous pouvez entrer.'
+    '> Initialisation terminée.'
 ];
 
 const typewriterContainer = document.getElementById('typewriter');
@@ -10,7 +10,6 @@ const container = document.querySelector('.container');
 const introScreen = document.querySelector('.intro-screen');
 const starterScreen = document.getElementById('starter-screen');
 const startScriptBtn = document.getElementById('start-script-btn');
-const enterBtn = document.getElementById('enter-btn');
 const glitchVideo = document.getElementById('glitch-video');
 
 let currentLine = 0;
@@ -61,19 +60,34 @@ function typeLine(text, callback) {
 
 function startTyping() {
     typewriterContainer.innerHTML = ''; // vide proprement
-    typeLine(lines[currentLine], () => {
-        currentLine++;
-        if (currentLine < lines.length) {
-            setTimeout(() => {
-                typeLine(lines[currentLine], showButton);
-            }, 200);
-        }
-    });
+
+    function typeNext() {
+        typeLine(lines[currentLine], () => {
+            currentLine++;
+            if (currentLine < lines.length) {
+                setTimeout(typeNext, 200);
+            } else {
+                showButton();
+            }
+        });
+    }
+
+    typeNext();
 }
 
 function showButton() {
     enterSection.classList.add('fade-visible');
-    if (enterBtn) enterBtn.focus();
+
+    const enterLine = document.createElement('p');
+    enterLine.textContent = '[ Entrer ]';
+    enterLine.classList.add('type-line');
+    enterLine.style.cursor = 'pointer';
+
+    enterLine.addEventListener('click', () => {
+        lancerTransition();
+    });
+
+    enterSection.appendChild(enterLine);
 }
 
 startScriptBtn.addEventListener('click', () => {
@@ -98,8 +112,8 @@ startScriptBtn.addEventListener('click', () => {
         });
 });
 
-enterBtn.addEventListener('click', () => {
-    enterBtn.style.display = 'none';
+function lancerTransition() {
+    enterSection.style.display = 'none';
     glitchVideo.classList.remove('hidden');
     glitchVideo.currentTime = 0;
     glitchVideo.play();
@@ -108,18 +122,14 @@ enterBtn.addEventListener('click', () => {
         glitchVideo.pause();
         glitchVideo.classList.add('hidden');
 
-        // Cacher et vider la zone d'intro AVANT de montrer le contenu principal
         introScreen.classList.add('hidden');
         typewriterContainer.innerHTML = '';
 
         setTimeout(() => {
-            introScreen.style.display = 'none';  // cache complètement
+            introScreen.style.display = 'none';
+            container.classList.remove('hidden');
+            container.classList.add('fade-in');
 
-            // 👉 Montre le container avec fondu progressif
-            container.classList.remove('hidden');  // retire display: none
-            container.classList.add('fade-in');    // applique transition
-
-            // Déclenche l'opacité après un petit délai pour que le navigateur prenne en compte la classe fade-in
             setTimeout(() => {
                 container.classList.add('visible');
             }, 50);
@@ -127,5 +137,5 @@ enterBtn.addEventListener('click', () => {
         }, 500);
 
     }, 2500);
-});
+}
 
