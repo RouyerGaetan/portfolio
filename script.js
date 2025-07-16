@@ -11,6 +11,9 @@ const introScreen = document.querySelector('.intro-screen');
 const starterScreen = document.getElementById('starter-screen');
 const startScriptBtn = document.getElementById('start-script-btn');
 const glitchVideo = document.getElementById('glitch-video');
+const toggleButton = document.getElementById('toggleButton');
+const pokedexPhoto = document.getElementById('pokedexPhoto');
+const flash = document.getElementById('flash');
 
 let currentLine = 0;
 
@@ -76,30 +79,30 @@ function startTyping() {
 }
 
 function showButton() {
-  enterSection.classList.add('fade-visible');
+    enterSection.classList.add('fade-visible');
 
-  const enterLine = document.createElement('p');
-  enterLine.textContent = '[ Entrer ]';
-  enterLine.classList.add('type-line', 'enter-line');
-  enterLine.style.cursor = 'pointer';
+    const enterLine = document.createElement('p');
+    enterLine.textContent = '[ Entrer ]';
+    enterLine.classList.add('type-line', 'enter-line');
+    enterLine.style.cursor = 'pointer';
 
-  // 👇 Clique avec la souris
-  enterLine.addEventListener('click', () => {
-    lancerTransition();
-  });
+    // 👇 Clique avec la souris
+    enterLine.addEventListener('click', () => {
+        lancerTransition();
+    });
 
-  // 👇 Appuie sur ENTER
-  function handleEnterKey(e) {
-    if (e.key === 'Enter') {
-      lancerTransition();
-      // Nettoie le listener une fois utilisé pour éviter les doublons
-      document.removeEventListener('keydown', handleEnterKey);
+    // 👇 Appuie sur ENTER
+    function handleEnterKey(e) {
+        if (e.key === 'Enter') {
+            lancerTransition();
+            // Nettoie le listener une fois utilisé pour éviter les doublons
+            document.removeEventListener('keydown', handleEnterKey);
+        }
     }
-  }
 
-  document.addEventListener('keydown', handleEnterKey);
+    document.addEventListener('keydown', handleEnterKey);
 
-  enterSection.appendChild(enterLine);
+    enterSection.appendChild(enterLine);
 }
 
 startScriptBtn.addEventListener('click', () => {
@@ -151,3 +154,26 @@ function lancerTransition() {
     }, 2500);
 }
 
+let isVisible = true;
+
+  toggleButton.addEventListener('click', () => {
+    if (isVisible) {
+      pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
+      flash.style.animation = 'flashEffect 0.3s forwards';
+      isVisible = false;
+    } else {
+      pokedexPhoto.style.display = 'block';
+      pokedexPhoto.style.animation = 'crtOn 0.5s forwards';
+      isVisible = true;
+    }
+  });
+
+  pokedexPhoto.addEventListener('animationend', (e) => {
+    if (!isVisible && e.animationName === 'crtOff') {
+      pokedexPhoto.style.display = 'none';
+    }
+  });
+
+  flash.addEventListener('animationend', () => {
+    flash.style.animation = 'none';
+  });
