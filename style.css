@@ -397,12 +397,26 @@ footer {
 
 
 /* Pokedex */
+.pokedex-wrapper {
+  position: relative; /* Crée un contexte pour positionner la box dedans */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 20px; /* Un peu d’espace autour */
+}
+
 .pokedex-container {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 400px;
+  position: relative; /* Maintenant relatif au wrapper */
+  width: 500px; /* Rends-le plus petit pour mobile si besoin */
+  max-width: 90vw; /* Ne jamais dépasser l’écran */
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .pokedex-container {
+    width: 200px;
+    margin: 0 auto; /* Centré sur petits écrans */
+  }
 }
 
 .pokedex-frame {
@@ -435,21 +449,29 @@ footer {
 
 .pokedex-info {
   position: absolute;
-  top: 29.5%;
+  top: 30%;
   left: 60.5%;
-  font-size: 16px;
-  color: #000000;
-  transform-origin: center center;
-  transition: transform 0.3s, opacity 0.3s;
+  font-size: 20px;
+  color: #000;
+  display: none;
+}
+
+.pokedex-number{
+  position: absolute;
+  top: 70.5%;
+  left: 55%;
+  font-size: 20px;
+  letter-spacing: 11px;
+  color: black;
   display: none;
 }
 
 .pokedex-button {
   position: absolute;
-  top: 67%;
-  left: 88.5%;
-  width: 25px;
-  height: 25px;
+  top: 67.2%;
+  left: 88.65%;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: none;
   opacity: 0;
@@ -460,16 +482,14 @@ footer {
 
 .led-indicator {
   position: absolute;
-  top: 11.5px;
-  right: 339.5px;
-  width: 45px;
-  height: 45px;
-  background-color: rgb(28, 172, 197);
+  top: 274px;
+  right: 456.5px; 
+  width: 25px;
+  height: 25px;
+  background-color: green;
   border-radius: 50%;
-  box-shadow: 0 0 5px rgb(28, 172, 197);
-  display: none;
+  box-shadow: 0 0 5px green;
   animation: ledBlink 1s infinite;
-  z-index: 15;
 }
 
 @keyframes ledBlink {

@@ -18,6 +18,7 @@ const ledIndicator = document.getElementById('ledIndicator');
 const pokedexInfo = document.getElementById('pokedexInfo');
 const powerUpSound = document.getElementById('powerUpSound');
 const powerDownSound = document.getElementById('powerDownSound');
+const pokedexNumber = document.getElementById('pokedexNumber');
 
 let currentLine = 0;
 
@@ -168,6 +169,7 @@ toggleButton.addEventListener('click', () => {
     if (isVisible) {
         pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
         pokedexInfo.style.animation = 'crtOff 0.5s forwards';
+        pokedexNumber.style.animation = 'crtOff 0.5s forwards';
         ledIndicator.style.display = 'none'; // ← cacher LED
 
         powerDownSound.currentTime = 0;
@@ -184,6 +186,11 @@ toggleButton.addEventListener('click', () => {
         pokedexInfo.style.animation = 'none';
         void pokedexInfo.offsetWidth;
         pokedexInfo.style.animation = 'crtOn 0.5s forwards';
+
+        pokedexNumber.style.display = 'block';
+        pokedexNumber.style.animation = 'none';
+        void pokedexNumber.offsetWidth;
+        pokedexNumber.style.animation = 'crtOn 0.5s forwards';
         
         ledIndicator.style.display = 'block';
 
