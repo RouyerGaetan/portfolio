@@ -402,7 +402,6 @@ footer {
   top: 20px;
   left: 20px;
   width: 400px;
-  /* ajuster selon ton image */
   height: auto;
 }
 
@@ -419,7 +418,6 @@ footer {
   width: 26.6%;
   height: 32%;
   overflow: hidden;
-  /* le flash reste bien dans la zone */
   border-radius: 5px;
 }
 
@@ -432,6 +430,15 @@ footer {
   object-fit: cover;
   transform-origin: center center;
   transition: transform 0.3s, opacity 0.3s;
+  display: none;
+}
+
+.pokedex-info {
+  position: absolute;
+  top: 29.5%;
+  left: 60.5%;
+  font-size: 16px;
+  color: #000000;
   display: none;
 }
 
@@ -452,16 +459,13 @@ footer {
 .led-indicator {
   position: absolute;
   top: 194.2px;
-  /* ← ajuste ça */
   right: 334.8px;
-  /* ← ajuste ça */
   width: 11px;
   height: 11px;
   background-color: red;
   border-radius: 50%;
   box-shadow: 0 0 5px red;
   display: none;
-  /* caché par défaut */
   animation: ledBlink 1s infinite;
   z-index: 15;
 }
