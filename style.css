@@ -23,10 +23,12 @@ body {
     transform: scale(1);
     box-shadow: 0 0 5px #fff;
   }
+
   50% {
     transform: scale(1.05);
     box-shadow: 0 0 20px #ea0707;
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 5px #fff;
@@ -399,7 +401,8 @@ footer {
   position: fixed;
   top: 20px;
   left: 20px;
-  width: 400px; /* ajuster selon ton image */
+  width: 400px;
+  /* ajuster selon ton image */
   height: auto;
 }
 
@@ -413,10 +416,11 @@ footer {
   position: absolute;
   top: 31%;
   left: 12%;
-  width: 27%;
+  width: 26.6%;
   height: 32%;
-  overflow: hidden; /* le flash reste bien dans la zone */
-  border-radius: 6px;
+  overflow: hidden;
+  /* le flash reste bien dans la zone */
+  border-radius: 5px;
 }
 
 .pokedex-photo {
@@ -447,23 +451,29 @@ footer {
 
 .led-indicator {
   position: absolute;
-  top: 194.2px;    /* ← ajuste ça */
-  right: 334.8px;  /* ← ajuste ça */
+  top: 194.2px;
+  /* ← ajuste ça */
+  right: 334.8px;
+  /* ← ajuste ça */
   width: 11px;
   height: 11px;
   background-color: red;
   border-radius: 50%;
   box-shadow: 0 0 5px red;
-  display: none; /* caché par défaut */
+  display: none;
+  /* caché par défaut */
   animation: ledBlink 1s infinite;
   z-index: 15;
 }
 
 @keyframes ledBlink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     box-shadow: 0 0 5px red;
   }
+
   50% {
     opacity: 0.3;
     box-shadow: 0 0 1px red;
@@ -485,9 +495,11 @@ footer {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -498,10 +510,12 @@ footer {
     transform: scaleY(1) scaleX(1);
     opacity: 1;
   }
+
   50% {
     transform: scaleY(0.05) scaleX(1);
     opacity: 1;
   }
+
   100% {
     transform: scaleY(0) scaleX(0);
     opacity: 0;
@@ -513,14 +527,14 @@ footer {
     transform: scaleY(0) scaleX(0);
     opacity: 0;
   }
+
   50% {
     transform: scaleY(0.05) scaleX(1);
     opacity: 1;
   }
+
   100% {
     transform: scaleY(1) scaleX(1);
     opacity: 1;
   }
 }
-
-
