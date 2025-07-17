@@ -1,69 +1,97 @@
+:root {
+  /* Couleurs principales */
+  --color-dark-bg: #0d0d0d;
+  --color-text-primary: #33ff33; /* Vert Matrix */
+  --color-text-secondary: #cccccc; /* Gris clair pour paragraphes */
+  --color-cyan: #00ffff; /* Cyan pour titres et accents */
+  --color-pink: #ff00c8; /* Rose pour glitch et accents */
+  --color-glitch-blue: #00fff9; /* Bleu pour glitch */
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Font */
+  --font-pixel: 'Press Start 2P', monospace;
+
+  /* Espacement */
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+}
+
 body {
   margin: 0;
-  background: #0d0d0d;
-  color: #33ff33;
-  font-family: 'Press Start 2P', monospace;
+  background: var(--color-dark-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-pixel);
   font-size: 14px;
   line-height: 1.6;
 }
 
-/* Partie Starter Screen */
+/* --- Utilities & Général --- */
+.hidden {
+  display: none;
+}
+
+.fade-transition {
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.fade-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fade-in {
+  opacity: 0;
+  display: block;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* --- Starter Screen --- */
 .starter-screen {
   position: fixed;
   inset: 0;
-  background: black;
+  background: var(--color-black);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 5px #fff;
-  }
-
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #ea0707;
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 5px #fff;
-  }
-}
-
 #start-script-btn {
-  font-family: 'Press Start 2P', monospace;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  background-color: #fff;
+  font-family: var(--font-pixel);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--spacing-sm);
+  background-color: var(--color-white);
   border: none;
   cursor: pointer;
   animation: pulse 2s infinite ease-in-out;
   transition: box-shadow 0.3s ease;
 }
 
-/* Partie Introduction */
+/* --- Introduction / Typewriter --- */
 #typewriter {
-  color: #33ff33;
-  padding: 2rem;
+  color: var(--color-text-primary);
+  padding: var(--spacing-md);
   text-align: left;
 }
 
 .type-line {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
   white-space: pre;
-  color: #33ff33;
+  color: var(--color-text-primary);
 }
 
 .cursor {
   display: inline-block;
   width: 1ch;
   animation: blink-caret 0.7s steps(1) infinite;
-  color: #33ff33;
+  color: var(--color-text-primary);
 }
 
 @keyframes blink-caret {
@@ -72,13 +100,8 @@ body {
   }
 }
 
-.fade-visible {
-  opacity: 1;
-  visibility: visible;
-}
-
 .enter-section {
-  margin-top: 2rem;
+  margin-top: var(--spacing-md);
   text-align: center;
   opacity: 0;
   visibility: hidden;
@@ -101,25 +124,24 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: #33ff33;
+  background: var(--color-text-primary);
   bottom: -4px;
-
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .enter-line:hover {
-  color: #ffffff;
+  color: var(--color-white);
   cursor: pointer;
 }
 
 .enter-line:hover::after {
   transform: scaleX(1);
-  background: #ffffff;
+  background: var(--color-white);
 }
 
-/* Vidéo glitch */
+/* --- Vidéo Glitch --- */
 #glitch-video {
   position: fixed;
   inset: 0;
@@ -129,11 +151,7 @@ body {
   z-index: 9999;
 }
 
-.hidden {
-  display: none;
-}
-
-/* Écran d'introduction */
+/* --- Écran d'introduction --- */
 .intro-screen {
   transition: opacity 0.5s ease;
 }
@@ -143,25 +161,13 @@ body {
   pointer-events: none;
 }
 
-/* Apparition en fondu */
-.fade-in {
-  opacity: 0;
-  display: block;
-  /* force l'affichage */
-  transition: opacity 1s ease-in-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-}
-
-/* Glitch */
+/* --- Glitch Text Effect --- */
 .glitch {
-  color: #fff;
+  color: var(--color-white);
   position: relative;
   font-size: 20px;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .glitch::before,
@@ -174,44 +180,23 @@ body {
 }
 
 .glitch::before {
-  color: #ff00c8;
+  color: var(--color-pink);
   top: -2px;
   animation: glitchTop 1s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-  color: #00fff9;
+  color: var(--color-glitch-blue);
   top: 2px;
   animation: glitchBottom 1s infinite linear alternate-reverse;
 }
 
-@keyframes glitchTop {
-  0% {
-    clip-path: inset(0 0 90% 0);
-  }
-
-  100% {
-    clip-path: inset(0 0 10% 0);
-  }
-}
-
-@keyframes glitchBottom {
-  0% {
-    clip-path: inset(90% 0 0 0);
-  }
-
-  100% {
-    clip-path: inset(10% 0 0 0);
-  }
-}
-
-/* Titres */
+/* --- Titres --- */
 h1,
 h2,
 h3 {
-  color: #00ffff;
-  /* Cyan pour titres */
-  margin-bottom: 1rem;
+  color: var(--color-cyan);
+  margin-bottom: var(--spacing-sm);
   line-height: 1.2;
 }
 
@@ -220,106 +205,92 @@ h1 {
 }
 
 h2 {
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 h3 {
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
-/* Paragraphes */
+/* --- Paragraphes --- */
 p {
-  color: #cccccc;
-  /* Texte plus lisible */
-  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
 }
 
-/* Contenu principal */
+/* --- Contenu principal --- */
 .container {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing-md);
   box-sizing: border-box;
 }
 
 header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-md);
 }
 
 nav {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 nav a {
-  color: #00ffff;
+  color: var(--color-cyan);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border: 1px solid #00ffff;
+  padding: 0.5rem var(--spacing-sm);
+  border: 1px solid var(--color-cyan);
   border-radius: 4px;
   transition: background 0.3s, color 0.3s;
 }
 
 nav a:hover {
-  background: #00ffff;
-  color: #000;
+  background: var(--color-cyan);
+  color: var(--color-black);
 }
 
-.intro-section-wrapper{
+.intro-section-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  transition:  all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .intro-active .intro-section-wrapper {
-  flex-direction: row; /* Passer en mode ligne (deux colonnes) */
-  justify-content: center; /* Centrer les deux colonnes si elles ne prennent pas toute la largeur */
-  align-items: flex-start; /* Aligner en haut (pour que le texte ne soit pas centré verticalement par rapport au pokedex) */
-  gap: 40px; /* Espace entre le pokedex et le texte */
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
 }
 
 .intro-active .pokedex-wrapper {
-  margin: 0; /* Supprimer les marges automatiques pour qu'il se positionne à gauche */
-  flex-shrink: 0; /* Empêcher le pokedex de rétrécir */
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .intro-active #intro {
-  display: block; /* Afficher la section */
-  opacity: 1; /* Rendre visible */
-  animation: fadeInFromRight 1s forwards; /* Optionnel: animation d'apparition */
-  text-align: left; /* Texte aligné à gauche en mode deux colonnes */
+  display: block;
+  opacity: 1;
+  animation: fadeInFromRight 1s forwards;
+  text-align: left;
 }
 
-/* Animation optionnelle pour l'apparition du texte */
-@keyframes fadeInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-main{
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem;
+  padding-top: var(--spacing-xl);
 }
 
-
 main section {
-  margin-bottom: 4rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 main p {
@@ -328,7 +299,7 @@ main p {
   max-width: 70ch;
 }
 
-/* Section Projets */
+/* --- Section Projets --- */
 #projects,
 #intro {
   display: flex;
@@ -336,7 +307,7 @@ main p {
   align-items: center;
 }
 
-#intro{
+#intro {
   display: none;
   opacity: 0;
   max-width: 70ch;
@@ -346,7 +317,7 @@ main p {
 
 .project-card {
   width: 100%;
-  border: 2px dashed #00ffff;
+  border: 2px dashed var(--color-cyan);
   padding: 2.5rem 3rem;
   background: #111;
   border-radius: 8px;
@@ -354,9 +325,9 @@ main p {
 }
 
 .project-card h3 {
-  color: #ff00c8;
+  color: var(--color-pink);
   font-size: 20px;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .project-card p {
@@ -365,22 +336,21 @@ main p {
   line-height: 1.8;
 }
 
-
-/* Formulaire de contact */
+/* --- Formulaire de contact --- */
 .contact {
   background-color: #111;
-  border: 2px dashed #00ffff;
+  border: 2px dashed var(--color-cyan);
   border-radius: 10px;
-  margin: 4rem auto;
-  padding: 3rem;
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-lg);
   max-width: 800px;
   box-sizing: border-box;
 }
 
 .contact h2 {
   text-align: center;
-  margin-bottom: 2rem;
-  color: #00ffff;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-cyan);
   font-size: 28px;
 }
 
@@ -394,27 +364,27 @@ form {
 }
 
 form label {
-  color: #00ffff;
+  color: var(--color-cyan);
 }
 
 form input,
 form textarea {
   width: 100%;
-  background: #000;
-  border: 2px solid #00ffff;
-  color: #00ffff;
+  background: var(--color-black);
+  border: 2px solid var(--color-cyan);
+  color: var(--color-cyan);
   border-radius: 5px;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem var(--spacing-sm);
   font-size: 14px;
   transition: border-color 0.3s;
   box-sizing: border-box;
 }
 
 form button {
-  background: #00ffff;
-  color: #000;
+  background: var(--color-cyan);
+  color: var(--color-black);
   border: none;
-  padding: 1rem 2rem;
+  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
@@ -428,46 +398,28 @@ form button:hover {
   transform: translateY(-2px);
 }
 
-form label,
-form input,
-form textarea,
-form button {
-  width: 100%;
-  max-width: 600px;
-  box-sizing: border-box;
-}
-
 form input,
 form textarea {
   margin-bottom: 1.5rem;
 }
 
-
-/* Footer */
+/* --- Footer --- */
 footer {
   color: #666;
   font-size: 12px;
 }
 
-
-/* Pokedex */
+/* --- Pokedex --- */
 .pokedex-wrapper {
-  margin: 0 auto 2rem auto; /* Centrer et ajouter un peu d'espace en bas */
+  margin: 0 auto var(--spacing-md) auto;
   transition: all 1s ease-in-out;
 }
 
 .pokedex-container {
   position: relative;
   width: 500px;
-  max-width: 90vw; 
+  max-width: 90vw;
   height: auto;
-}
-
-@media (max-width: 768px) {
-  .pokedex-container {
-    width: 200px;
-    margin: 0 auto; /* Centré sur petits écrans */
-  }
 }
 
 .pokedex-frame {
@@ -503,17 +455,17 @@ footer {
   top: 30%;
   left: 60.5%;
   font-size: 20px;
-  color: #000;
+  color: var(--color-black);
   display: none;
 }
 
-.pokedex-number{
+.pokedex-number {
   position: absolute;
   top: 70.5%;
   left: 55%;
   font-size: 20px;
   letter-spacing: 11px;
-  color: black;
+  color: var(--color-black);
   display: none;
 }
 
@@ -534,7 +486,7 @@ footer {
 .led-indicator {
   position: absolute;
   top: 72.8%;
-  right:91.3%; 
+  right: 91.3%;
   width: 25px;
   height: 25px;
   background-color: green;
@@ -543,29 +495,75 @@ footer {
   animation: ledBlink 1s infinite;
 }
 
-@keyframes ledBlink {
+.flash {
+  position: absolute;
+  inset: 0;
+  background: var(--color-white);
+  opacity: 0;
+  pointer-events: none;
+}
 
+/* --- Keyframes --- */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--color-white);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ea0707;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--color-white);
+  }
+}
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glitchTop {
+  0% {
+    clip-path: inset(0 0 90% 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 10% 0);
+  }
+}
+
+@keyframes glitchBottom {
+  0% {
+    clip-path: inset(90% 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(10% 0 0 0);
+  }
+}
+
+@keyframes ledBlink {
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 5px rgb(0, 0, 0);
+    box-shadow: 0 0 5px var(--color-black);
   }
 
   50% {
     opacity: 0.3;
-    box-shadow: 0 0 1px rgb(0, 0, 0);
+    box-shadow: 0 0 1px var(--color-black);
   }
-}
-
-.flash {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  opacity: 0;
-  pointer-events: none;
 }
 
 @keyframes flashEffect {
@@ -616,14 +614,21 @@ footer {
   }
 }
 
-/* Ajustements pour les écrans plus petits */
-@media (max-width: 900px) { /* Ajuster cette valeur selon vos besoins */
+/* --- Media Queries --- */
+@media (max-width: 900px) {
   .intro-active .intro-section-wrapper {
-    flex-direction: column; /* Revenir à une seule colonne sur les petits écrans */
+    flex-direction: column;
     align-items: center;
     gap: 20px;
   }
   .intro-active #intro {
-    text-align: center; /* Recentrer le texte sur les petits écrans */
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .pokedex-container {
+    width: 200px;
+    margin: 0 auto;
   }
 }
