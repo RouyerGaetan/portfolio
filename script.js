@@ -16,6 +16,8 @@ const pokedexPhoto = document.getElementById('pokedexPhoto');
 const flash = document.getElementById('flash');
 const ledIndicator = document.getElementById('ledIndicator');
 const pokedexInfo = document.getElementById('pokedexInfo');
+const powerUpSound = document.getElementById('powerUpSound');
+const powerDownSound = document.getElementById('powerDownSound');
 
 let currentLine = 0;
 
@@ -168,6 +170,10 @@ toggleButton.addEventListener('click', () => {
         ledIndicator.style.display = 'none'; // ← cacher LED
         pokedexInfo.style.display = 'none'; // ← cacher info
         pokedexInfo.style.animation = 'crtOff 0.5s forwards';
+
+        powerDownSound.currentTime = 0;
+        powerDownSound.play();
+
         isVisible = false;
     } else {
         pokedexPhoto.style.display = 'block';
@@ -177,6 +183,10 @@ toggleButton.addEventListener('click', () => {
         ledIndicator.style.display = 'block'; // ← montrer LED
         pokedexInfo.style.display = 'block'; // ← montrer info
         pokedexInfo.style.animation = 'crtOn 0.5s forwards';
+
+        powerUpSound.currentTime = 0;
+        powerUpSound.play();
+
         isVisible = true;
     }
 });

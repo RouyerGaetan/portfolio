@@ -462,7 +462,7 @@ footer {
   right: 334.8px;
   width: 11px;
   height: 11px;
-  background-color: red;
+  background-color: rgb(38, 188, 222);
   border-radius: 50%;
   box-shadow: 0 0 5px red;
   display: none;
