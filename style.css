@@ -241,7 +241,7 @@ p {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2rem;
   box-sizing: border-box;
 }
 
@@ -271,6 +271,53 @@ nav a:hover {
   color: #000;
 }
 
+.intro-section-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transition:  all 1s ease-in-out;
+}
+
+.intro-active .intro-section-wrapper {
+  flex-direction: row; /* Passer en mode ligne (deux colonnes) */
+  justify-content: center; /* Centrer les deux colonnes si elles ne prennent pas toute la largeur */
+  align-items: flex-start; /* Aligner en haut (pour que le texte ne soit pas centré verticalement par rapport au pokedex) */
+  gap: 40px; /* Espace entre le pokedex et le texte */
+}
+
+.intro-active .pokedex-wrapper {
+  margin: 0; /* Supprimer les marges automatiques pour qu'il se positionne à gauche */
+  flex-shrink: 0; /* Empêcher le pokedex de rétrécir */
+}
+
+.intro-active #intro {
+  display: block; /* Afficher la section */
+  opacity: 1; /* Rendre visible */
+  animation: fadeInFromRight 1s forwards; /* Optionnel: animation d'apparition */
+  text-align: left; /* Texte aligné à gauche en mode deux colonnes */
+}
+
+/* Animation optionnelle pour l'apparition du texte */
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+}
+
+
 main section {
   margin-bottom: 4rem;
 }
@@ -289,6 +336,13 @@ main p {
   align-items: center;
 }
 
+#intro{
+  display: none;
+  opacity: 0;
+  max-width: 70ch;
+  text-align: center;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
 
 .project-card {
   width: 100%;
@@ -398,17 +452,14 @@ footer {
 
 /* Pokedex */
 .pokedex-wrapper {
-  position: relative; /* Crée un contexte pour positionner la box dedans */
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin: 20px; /* Un peu d’espace autour */
+  margin: 0 auto 2rem auto; /* Centrer et ajouter un peu d'espace en bas */
+  transition: all 1s ease-in-out;
 }
 
 .pokedex-container {
-  position: relative; /* Maintenant relatif au wrapper */
-  width: 500px; /* Rends-le plus petit pour mobile si besoin */
-  max-width: 90vw; /* Ne jamais dépasser l’écran */
+  position: relative;
+  width: 500px;
+  max-width: 90vw; 
   height: auto;
 }
 
@@ -482,8 +533,8 @@ footer {
 
 .led-indicator {
   position: absolute;
-  top: 274px;
-  right: 456.5px; 
+  top: 72.8%;
+  right:91.3%; 
   width: 25px;
   height: 25px;
   background-color: green;
@@ -562,5 +613,17 @@ footer {
   100% {
     transform: scaleY(1) scaleX(1);
     opacity: 1;
+  }
+}
+
+/* Ajustements pour les écrans plus petits */
+@media (max-width: 900px) { /* Ajuster cette valeur selon vos besoins */
+  .intro-active .intro-section-wrapper {
+    flex-direction: column; /* Revenir à une seule colonne sur les petits écrans */
+    align-items: center;
+    gap: 20px;
+  }
+  .intro-active #intro {
+    text-align: center; /* Recentrer le texte sur les petits écrans */
   }
 }

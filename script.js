@@ -19,6 +19,7 @@ const pokedexInfo = document.getElementById('pokedexInfo');
 const powerUpSound = document.getElementById('powerUpSound');
 const powerDownSound = document.getElementById('powerDownSound');
 const pokedexNumber = document.getElementById('pokedexNumber');
+const introSectionWrapper = document.querySelector('.intro-section-wrapper');
 
 let currentLine = 0;
 
@@ -159,24 +160,37 @@ function lancerTransition() {
     }, 2500);
 }
 
-let isVisible = false;
+let isPokedexActive = false; // Indique si le Pokédex est en mode "actif" (avec infos affichées et deux colonnes)
 
 toggleButton.addEventListener('click', () => {
     flash.style.animation = 'none';
     void flash.offsetWidth;
     flash.style.animation = 'flashEffect 0.3s forwards';
 
-    if (isVisible) {
+    if (isPokedexActive) {
+        // État de désactivation : cacher les infos, revenir à 1 colonne
         pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
         pokedexInfo.style.animation = 'crtOff 0.5s forwards';
         pokedexNumber.style.animation = 'crtOff 0.5s forwards';
-        ledIndicator.style.display = 'none'; // ← cacher LED
+        ledIndicator.style.display = 'none';
 
         powerDownSound.currentTime = 0;
         powerDownSound.play();
 
-        isVisible = false;
+        // RETIRER la classe pour revenir à l'état initial (1 colonne)
+        introSectionWrapper.classList.remove('intro-active');
+        document.body.classList.remove('intro-active'); // Si vous avez des styles sur le body aussi
+
+        // Masquer la section intro après la transition du pokedex
+        // On attend que la transition du pokedex soit finie pour masquer le texte
+        setTimeout(() => {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('intro').style.opacity = 0;
+        }, 800); // Un peu moins que la durée de transition (.intro-section-wrapper)
+
+        isPokedexActive = false;
     } else {
+        // État d'activation : afficher les infos, passer en 2 colonnes
         pokedexPhoto.style.display = 'block';
         pokedexPhoto.style.animation = 'none';
         void pokedexPhoto.offsetWidth;
@@ -191,12 +205,23 @@ toggleButton.addEventListener('click', () => {
         pokedexNumber.style.animation = 'none';
         void pokedexNumber.offsetWidth;
         pokedexNumber.style.animation = 'crtOn 0.5s forwards';
-        
+
         ledIndicator.style.display = 'block';
 
         powerUpSound.currentTime = 0;
         powerUpSound.play();
 
-        isVisible = true;
+        // 💡 AJOUT : Remettre la section #intro en 'block' AVANT d'ajouter les classes 'intro-active'
+        const introSection = document.getElementById('intro');
+        introSection.style.display = 'block'; // Rendre visible pour que les transitions CSS puissent s'appliquer
+
+        // AJOUTER la classe pour passer en mode "deux colonnes"
+        // On peut même utiliser requestAnimationFrame ici pour une meilleure fluidité
+        requestAnimationFrame(() => {
+            introSectionWrapper.classList.add('intro-active');
+            document.body.classList.add('intro-active');
+        });
+
+        isPokedexActive = true;
     }
 });
