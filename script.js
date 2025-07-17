@@ -167,9 +167,8 @@ toggleButton.addEventListener('click', () => {
 
     if (isVisible) {
         pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
-        ledIndicator.style.display = 'none'; // ← cacher LED
-        pokedexInfo.style.display = 'none'; // ← cacher info
         pokedexInfo.style.animation = 'crtOff 0.5s forwards';
+        ledIndicator.style.display = 'none'; // ← cacher LED
 
         powerDownSound.currentTime = 0;
         powerDownSound.play();
@@ -180,9 +179,13 @@ toggleButton.addEventListener('click', () => {
         pokedexPhoto.style.animation = 'none';
         void pokedexPhoto.offsetWidth;
         pokedexPhoto.style.animation = 'crtOn 0.5s forwards';
-        ledIndicator.style.display = 'block'; // ← montrer LED
-        pokedexInfo.style.display = 'block'; // ← montrer info
+
+        pokedexInfo.style.display = 'block';
+        pokedexInfo.style.animation = 'none';
+        void pokedexInfo.offsetWidth;
         pokedexInfo.style.animation = 'crtOn 0.5s forwards';
+        
+        ledIndicator.style.display = 'block';
 
         powerUpSound.currentTime = 0;
         powerUpSound.play();

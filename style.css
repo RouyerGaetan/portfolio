@@ -439,6 +439,8 @@ footer {
   left: 60.5%;
   font-size: 16px;
   color: #000000;
+  transform-origin: center center;
+  transition: transform 0.3s, opacity 0.3s;
   display: none;
 }
 
@@ -458,13 +460,13 @@ footer {
 
 .led-indicator {
   position: absolute;
-  top: 194.2px;
-  right: 334.8px;
-  width: 11px;
-  height: 11px;
-  background-color: rgb(38, 188, 222);
+  top: 11.5px;
+  right: 339.5px;
+  width: 45px;
+  height: 45px;
+  background-color: rgb(28, 172, 197);
   border-radius: 50%;
-  box-shadow: 0 0 5px red;
+  box-shadow: 0 0 5px rgb(28, 172, 197);
   display: none;
   animation: ledBlink 1s infinite;
   z-index: 15;
@@ -475,12 +477,12 @@ footer {
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 5px red;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
   }
 
   50% {
     opacity: 0.3;
-    box-shadow: 0 0 1px red;
+    box-shadow: 0 0 1px rgb(0, 0, 0);
   }
 }
 
