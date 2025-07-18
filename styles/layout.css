@@ -83,4 +83,9 @@ main p {
 footer {
   color: #666;
   font-size: 12px;
+  text-align: center;
+  padding: var(--spacing-md); 
+  margin-top: var(--spacing-xl); 
+  width: 100%; 
+  box-sizing: border-box; 
 }

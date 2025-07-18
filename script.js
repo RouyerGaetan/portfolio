@@ -21,6 +21,8 @@ const powerDownSound = document.getElementById('powerDownSound');
 const pokedexNumber = document.getElementById('pokedexNumber');
 const introSectionWrapper = document.querySelector('.intro-section-wrapper');
 const pokedexInstruction = document.getElementById('pokedexInstruction');
+const contactSection = document.getElementById('contact');
+const footerElement = document.querySelector('footer');
 
 let currentLine = 0;
 
@@ -152,6 +154,13 @@ function lancerTransition() {
             container.classList.remove('hidden');
             container.classList.add('fade-in');
 
+            if (contactSection) {
+                contactSection.classList.remove('hidden');
+            }
+            if (footerElement) {
+                footerElement.classList.remove('hidden');
+            }
+
             setTimeout(() => {
                 container.classList.add('visible');
             }, 50);
@@ -214,12 +223,9 @@ toggleButton.addEventListener('click', () => {
         powerUpSound.currentTime = 0;
         powerUpSound.play();
 
-        // 💡 AJOUT : Remettre la section #intro en 'block' AVANT d'ajouter les classes 'intro-active'
         const introSection = document.getElementById('intro');
-        introSection.style.display = 'block'; // Rendre visible pour que les transitions CSS puissent s'appliquer
+        introSection.style.display = 'block';
 
-        // AJOUTER la classe pour passer en mode "deux colonnes"
-        // On peut même utiliser requestAnimationFrame ici pour une meilleure fluidité
         requestAnimationFrame(() => {
             introSectionWrapper.classList.add('intro-active');
             document.body.classList.add('intro-active');
