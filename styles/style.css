@@ -1,0 +1,11 @@
+
+/* styles/styles.css */
+
+@import url('base.css');
+@import url('utilities.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('sections.css');
+@import url('pokedex.css');
+@import url('animations.css');
+@import url('mediaqueries.css');

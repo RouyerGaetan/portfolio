@@ -1,0 +1,86 @@
+/* _layout.css */
+
+/* --- Contenu principal --- */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+nav a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  padding: 0.5rem var(--spacing-sm);
+  border: 1px solid var(--color-cyan);
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background: var(--color-cyan);
+  color: var(--color-black);
+}
+
+.intro-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transition: all 1s ease-in-out;
+}
+
+.intro-active .intro-section-wrapper {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.intro-active .pokedex-wrapper {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.intro-active #intro {
+  display: block;
+  opacity: 1;
+  animation: fadeInFromRight 1s forwards;
+  text-align: left;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--spacing-xl);
+}
+
+main section {
+  margin-bottom: var(--spacing-xl);
+}
+
+main p {
+  line-height: 1.8;
+  font-size: 15px;
+  max-width: 70ch;
+}
+
+/* --- Footer --- */
+footer {
+  color: #666;
+  font-size: 12px;
+}

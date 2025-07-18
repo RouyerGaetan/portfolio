@@ -1,0 +1,112 @@
+/* _animations.css */
+
+/* --- Keyframes --- */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--color-white);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ea0707;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--color-white);
+  }
+}
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glitchTop {
+  0% {
+    clip-path: inset(0 0 90% 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 10% 0);
+  }
+}
+
+@keyframes glitchBottom {
+  0% {
+    clip-path: inset(90% 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(10% 0 0 0);
+  }
+}
+
+@keyframes ledBlink {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 5px var(--color-black);
+  }
+
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 1px var(--color-black);
+  }
+}
+
+@keyframes flashEffect {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes crtOff {
+  0% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scaleY(0.05) scaleX(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0) scaleX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes crtOn {
+  0% {
+    transform: scaleY(0) scaleX(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scaleY(0.05) scaleX(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+}
