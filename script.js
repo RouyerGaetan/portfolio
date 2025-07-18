@@ -19,6 +19,7 @@ const pokedexInfo = document.getElementById('pokedexInfo');
 const powerUpSound = document.getElementById('powerUpSound');
 const powerDownSound = document.getElementById('powerDownSound');
 const pokedexNumber = document.getElementById('pokedexNumber');
+const pokedexStatus = document.getElementById('pokedexStatus');
 const introSectionWrapper = document.querySelector('.intro-section-wrapper');
 const pokedexInstruction = document.getElementById('pokedexInstruction');
 const contactSection = document.getElementById('contact');
@@ -182,6 +183,7 @@ toggleButton.addEventListener('click', () => {
         pokedexPhoto.style.animation = 'crtOff 0.5s forwards';
         pokedexInfo.style.animation = 'crtOff 0.5s forwards';
         pokedexNumber.style.animation = 'crtOff 0.5s forwards';
+        pokedexStatus.style.animation = 'crtOff 0.5s forwards';
         ledIndicator.style.display = 'none';
 
         powerDownSound.currentTime = 0;
@@ -217,6 +219,15 @@ toggleButton.addEventListener('click', () => {
         pokedexNumber.style.animation = 'none';
         void pokedexNumber.offsetWidth;
         pokedexNumber.style.animation = 'crtOn 0.5s forwards';
+
+        pokedexStatus.style.display = 'block';
+        pokedexStatus.style.animation = 'none';
+        void pokedexStatus.offsetWidth;
+        pokedexStatus.style.animation = 'crtOn 0.5s forwards';
+
+        setTimeout(() => {
+            pokedexStatus.style.animation = 'ledBlink 1s infinite';
+        }, 500);
 
         ledIndicator.style.display = 'block';
 

@@ -60,6 +60,17 @@
   display: none;
 }
 
+.pokedex-status {
+  position: absolute;
+  top: 85.5%;
+  left: 15.5%;
+  font-size: 8px;
+  color: var(--color-green);
+  display: none;
+  font-weight: bold;
+  animation: ledBlink 1s infinite;
+}
+
 .pokedex-button {
   position: absolute;
   top: 67.2%;
