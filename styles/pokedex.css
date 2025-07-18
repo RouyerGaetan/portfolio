@@ -74,6 +74,19 @@
   z-index: 10;
 }
 
+.pokedex-instruction {
+  position: absolute;
+  top: 68.5%;
+  left: 99%;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 1;
+  text-shadow: 0 0 5px var(--color-text-primary), 0 0 10px var(--color-text-primary);
+  animation: blink 1.5s infinite alternate;
+}
+
 .led-indicator {
   position: absolute;
   top: 72.8%;

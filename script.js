@@ -20,6 +20,7 @@ const powerUpSound = document.getElementById('powerUpSound');
 const powerDownSound = document.getElementById('powerDownSound');
 const pokedexNumber = document.getElementById('pokedexNumber');
 const introSectionWrapper = document.querySelector('.intro-section-wrapper');
+const pokedexInstruction = document.getElementById('pokedexInstruction');
 
 let currentLine = 0;
 
@@ -188,6 +189,8 @@ toggleButton.addEventListener('click', () => {
             document.getElementById('intro').style.opacity = 0;
         }, 800); // Un peu moins que la durée de transition (.intro-section-wrapper)
 
+        pokedexInstruction.classList.remove('hidden');
+
         isPokedexActive = false;
     } else {
         // État d'activation : afficher les infos, passer en 2 colonnes
@@ -221,6 +224,8 @@ toggleButton.addEventListener('click', () => {
             introSectionWrapper.classList.add('intro-active');
             document.body.classList.add('intro-active');
         });
+
+        pokedexInstruction.classList.add('hidden');
 
         isPokedexActive = true;
     }
