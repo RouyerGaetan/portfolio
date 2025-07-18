@@ -112,9 +112,95 @@
 }
 
 #intro {
+  position: relative;
   display: none;
   opacity: 0;
   max-width: 70ch;
   text-align: center;
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  padding: var(--spacing-md);
+  box-sizing: border-box;
+}
+
+/* --- Animation des tirets pour le texte intro--- */
+.animated-border-section {
+  border: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden; /* Important pour que les bordures ne dépassent pas aux coins */
+}
+
+/* Pseudo-éléments pour les lignes horizontales (haut et bas) */
+.animated-border-section::before, /* Ligne du haut */
+.animated-border-section::after {  /* Ligne du bas */
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--color-cyan) 0 3px, transparent 3px 6px);
+  transform: scaleX(0); /* Masqué par défaut */
+  opacity: 0;
+}
+
+.animated-border-section::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  transform-origin: left; /* **1er Segment :** Commence à gauche, va vers la droite */
+}
+
+.animated-border-section::after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform-origin: right; /* **3ème Segment :** Commence à droite, va vers la gauche */
+}
+
+/* Les div pour les lignes verticales (gauche et droite) */
+.animated-border-section .border-line {
+  position: absolute;
+  width: 2px;
+  background: repeating-linear-gradient(0deg, var(--color-cyan) 0 3px, transparent 3px 6px);
+  transform: scaleY(0); /* Masqué par défaut */
+  opacity: 0;
+}
+
+.animated-border-section .border-left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transform-origin: bottom; /* **4ème Segment :** Commence en bas, va vers le haut (ferme le cercle) */
+}
+
+.animated-border-section .border-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform-origin: top; /* **2ème Segment :** Commence en haut, va vers le bas */
+}
+
+
+/* Animation de la bordure lorsque la section est active */
+.intro-active #intro.animated-border-section::before {
+  /* 1. Bordure du haut (gauche vers droite) */
+  animation: drawHorizontal 0.7s linear forwards;
+  opacity: 1;
+}
+
+.intro-active #intro.animated-border-section .border-right {
+  /* 2. Bordure droite (haut vers bas) */
+  animation: drawVertical 0.7s linear forwards 0.7s; /* Démarre après 0.7s (fin du 1er segment) */
+  opacity: 1;
+}
+
+.intro-active #intro.animated-border-section::after {
+  /* 3. Bordure du bas (droite vers gauche) */
+  animation: drawHorizontal 0.7s linear forwards 1.4s; /* Démarre après 1.4s (fin du 2ème segment) */
+  opacity: 1;
+}
+
+.intro-active #intro.animated-border-section .border-left {
+  /* 4. Bordure gauche (bas vers haut) */
+  animation: drawVertical 0.7s linear forwards 2.1s; /* Démarre après 2.1s (fin du 3ème segment) */
+  opacity: 1;
 }
